@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN" "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+    <!--该配置声明，如果找不到action，则到spring中去找相应的bean-->
+    <constant name="struts.objectFactory" value="spring"/>
+
+
+    <package name="default" extends="struts-default">
+        <!--这里没有使用全限定类名，所以struts2的objectFactory找不到该类，就会到application.xml中去找相应的bean-->
+        <action name="login" class="login">
+            <result name="success">success.jsp</result>
+            <result name="error">fail.jsp</result>
+        </action>
+    </package>
+</struts>
