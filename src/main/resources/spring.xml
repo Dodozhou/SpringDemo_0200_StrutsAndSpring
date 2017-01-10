@@ -19,10 +19,15 @@
 
     <!--创建SessionFactory的时候需要dataSource为参数，包含数据库连接信息-->
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+       <!-- <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
         <property name="url" value="jdbc:mysql://localhost:3306/test"/>
         <property name="username" value="root"/>
-        <property name="password" value="root"/>
+        <property name="password" value="root"/>-->
+        <property name="driverClassName" value="${driverClassName}"/>
+        <property name="url" value="${url}"/>
+        <!--这里不能用"${username}"，否则会报异常，原因未知-->
+        <property name="username" value="${jdbc_username}"/>
+        <property name="password" value="${password}"/>
     </bean>
 
     <!--创建HibernateTemplate的时候需要SessionFactory为参数，包含orm框架配置信息-->
